@@ -14,4 +14,4 @@ Some Functions below are work in progress see config.py
 * Thermocouple Offset     adjust if needed to calibrate experience people use only
 
 This software Perfect for controlling a electric kiln and is works reliably. 
-The added options make it suitable for a much wider range of thermal controllers. 
+The added options make it suitable for a much wider range of thermal control. 
