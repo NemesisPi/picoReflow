@@ -1,0 +1,10 @@
+Auto tune kiln then save PID settings to corrosponding kiln config number
+To use ,copy to main Nemesis PI directory delete current config then rename your config kiln 4 for example  to "config.py"
+then start controller as normal in manual mode or if you wish to stick to the same kiln set up auto boot function see manual
+that comes with your nemesis pi
+
+Once config has been copied you need to when using manual mode restart TERMINAL then open up controller program again
+If Using Auto Booting You Must Restart the Nemess PI Rogue 
+After following above steps New PID settings will be applied
+
+Several Kiln Configs can be found on your Nemesis PI Rogue in file explorer /home/pi/NemesisPI/storage
