@@ -163,7 +163,7 @@ class Oven (threading.Thread):
             now = datetime.datetime.now()
             
             #Log Data:
-            with open("/home/pi//NemesisPI/storage/logs/log_{0}.txt".format(now.strftime("%Y-%m-%d")), "a") as filelog:
+            with open("/home/pi//NemesisPI/storage/logs/log_{0}.txt".format(now.strftime("")), "a") as filelog:
                 filelog.write("".format(
                     now.strftime(""),
                     self.temp_sensor.temperature,
@@ -175,7 +175,7 @@ class Oven (threading.Thread):
 
             if self.state == Oven.STATE_TUNING:
 
-                log.info("running at %.1f deg C (Target: %.1f) , heat %.2f, cool %.2f, air %.2f, door %s (%.1fs/%.0f)" %
+                log.debug("running at %.1f deg C (Target: %.1f) , heat %.2f, cool %.2f, air %.2f, door %s (%.1fs/%.0f)" %
                          (self.temp_sensor.temperature, self.target, self.heat, self.cool, self.air, self.door,
                           self.runtime,
                           self.totaltime))
