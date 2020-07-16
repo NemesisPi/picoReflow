@@ -1,18 +1,11 @@
 You have been Warned
 
-Never Fill Disk/SD card while operating kiln controller it will cause IO error kiln will go full power and timer will not count down
-Above happens as a log file of firings needs to be saved also if you are firing and download a file bigger hen your hd space
-
-
 Never Close Terminal with out stopping firings first while in manual mode and kiln is on as this will cause kiln will go full power always press STOP in controller program and timer will not count down
 
-If solid State shorts kiln will go full power, rebooting your pi can stop kiln from going full power while monitoring your kiln
-
-Allways set this option in config.py once that temperature hits that temperature it stops program but not if you close terminal as explained above in manual mode
+Always set this option in config.py once that temperature hits that temperature it stops program but not if you close terminal as explained above in manual mode
 emergency_shutoff_temp = 1270
 
 
 Always be in attendance as kiln manufactures state
 
 This is Freeware!!! 
-
