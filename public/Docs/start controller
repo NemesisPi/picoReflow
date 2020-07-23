@@ -1,7 +1,0 @@
-Copy below 2 Lines into Terminal Press enter to start the controller then the open web browser enter 127.0.0.1:8081 into address bar for local deployment on the Nemesis PI Rogue
-or Ip address for example 192.168.1.113:8081 on your PC/Mac phone tablet etc's web browser on the same Local network to view once below has been run in the Terminal
-
-cd NemesisPI
-python picoreflowd.py
-
-
