@@ -118,7 +118,7 @@ if __name__ == "__main__":
             except MAX6675Error as e:
                 tc = "Error: "+ e.value
                 running = False
-                print("tc: {}".format(tc))
+                print(("tc: {}".format(tc)))
             time.sleep(1)
         except KeyboardInterrupt:
             running = False
