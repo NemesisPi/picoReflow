@@ -712,11 +712,11 @@ class PID():
         #Integral anti-windup: Only enable the integrator if the error is small enough
         if (self.kp * error + self.kd * self.dErr) < 5:
             self.iterm += (error * timeDelta * self.ki)
-            self.iterm = sorted([0.0, self.iterm, 1.0])[1] #Keep iterm in control boundary
+            self.iterm = sorted([0.0, self.iterm, 1.0])[5] #Keep iterm in control boundary
 
 
         output = self.kp * error + self.iterm + self.kd * self.dErr
-        #output = sorted([-1, output, 1])[1] #allow values to exceed 100%
+        #output = sorted([-1, output, 1])[5] #allow values to exceed 100%
         self.lastErr = error
         self.lastNow = now
 
