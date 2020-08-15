@@ -62,7 +62,7 @@ spi_sensor_chip_id = 0
 
 ### amount of time, in seconds, to wait between reads of the thermocouple
 # This is also the rate of the control loop
-sensor_read_period = 3
+sensor_read_period = 5
 
 
 # PWM Settings
