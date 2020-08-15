@@ -62,12 +62,12 @@ spi_sensor_chip_id = 0
 
 ### amount of time, in seconds, to wait between reads of the thermocouple
 # This is also the rate of the control loop
-sensor_read_period = 20
+sensor_read_period = 8
 
 
 # PWM Settings
 ### Default period of PWM, in seconds
-PWM_Period_s = 4
+PWM_Period_s = 14
 
 # The period will be extended to meet the demanded duty cycle for DC close to 0 or 100%
 # without violating the minimum onoff time, until the period reaches its max, at which point
@@ -75,7 +75,7 @@ PWM_Period_s = 4
 # This allows more precise PWM near 0 or 1 without causing rapid relay switching
 
 ### Minimum On or Off time, in seconds. 
-PWM_MinimumOnOff_s = 2
+PWM_MinimumOnOff_s = 1
 
 ### Maximum allowed extended period
 PWM_PeriodMax_s = 90
