@@ -710,7 +710,7 @@ class PID():
         if math.isnan(self.dErr): self.dErr = 0
         if self.kd != 0: self.dErr = sorted([-2/self.kd, self.dErr, 2/self.kd])[1]
         #Integral anti-windup: Only enable the integrator if the error is small enough
-        if (self.kp * error + self.kd * self.dErr) < 2:
+        if (self.kp * error + self.kd * self.dErr) < 5:
             self.iterm += (error * timeDelta * self.ki)
             self.iterm = sorted([0.0, self.iterm, 1.0])[1] #Keep iterm in control boundary
 
