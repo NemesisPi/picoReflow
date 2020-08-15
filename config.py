@@ -67,7 +67,7 @@ sensor_read_period = 5
 
 # PWM Settings
 ### Default period of PWM, in seconds
-PWM_Period_s = 14
+PWM_Period_s = 4
 
 # The period will be extended to meet the demanded duty cycle for DC close to 0 or 100%
 # without violating the minimum onoff time, until the period reaches its max, at which point
