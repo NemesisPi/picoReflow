@@ -264,7 +264,7 @@ class Oven (threading.Thread):
                     # If the heat is on and nothing is changing, reset
                     # The direction or amount of change does not matter
                     # This prevents runaway in the event of a sensor read failure
-                    if temperature_count > 90:
+                    if temperature_count > 100:
                         log.info("Error reading sensor, oven temp not responding to heat.")
                         self.reset()
                         continue
@@ -706,11 +706,11 @@ class PID():
         error = float(setpoint - ispoint)
 
         #Smooth out the dErr by running it through a simple filter
-        self.dErr = (((error - self.lastErr) / timeDelta) + self.dErr) / 2
+        self.dErr = (((error - self.lastErr) / timeDelta) + self.dErr) / 5
         if math.isnan(self.dErr): self.dErr = 0
-        if self.kd != 0: self.dErr = sorted([-2/self.kd, self.dErr, 2/self.kd])[1]
+        if self.kd != 0: self.dErr = sorted([-5/self.kd, self.dErr, 5/self.kd])[1]
         #Integral anti-windup: Only enable the integrator if the error is small enough
-        if (self.kp * error + self.kd * self.dErr) < 2:
+        if (self.kp * error + self.kd * self.dErr) < 5:
             self.iterm += (error * timeDelta * self.ki)
             self.iterm = sorted([0.0, self.iterm, 1.0])[1] #Keep iterm in control boundary
 
