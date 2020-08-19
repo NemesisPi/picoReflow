@@ -87,14 +87,14 @@ PWM_PeriodMax_s = 90
 heat1adj = 0		# heater 1 PWM offset, in percent
 heat2adj = 0		# heater 2 PWM offset, in percent
 
-### Profile Adjustments for Kilns currently not operating we are working on it
+### Profile Adjustments for Kilns currently not operating we are working on it do not adjust
 # must_hit_temp adjusts for systems where the heater might not be able to keep up with the profile
 # If false, the system will not adjust the timing of the profile
 # If true, the system is guaranteed to hit the temperatures of the profile. It will wait until
 # the target is reached before moving to the next segment of the profile
 must_hit_temp = True
 
-# Cone slope adj adjusts the target temperature when the segment takes longer than expected
+# Cone slope adj adjusts the target temperature when the segment takes longer than expected NOT working yet do not adjust
 # It's expressed in deg C per (deg C per hour), i.e. the shift in temperature target per shift in temperature rate
 # For instance, setting to 0.4 will reduce the target temperature by 40 deg C if the final slope is 100 deg C/hour
 # lower than the profile slope
