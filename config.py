@@ -75,7 +75,7 @@ PWM_Period_s = 14
 # This allows more precise PWM near 0 or 1 without causing rapid relay switching
 
 ### Minimum On or Off time, in seconds. 
-PWM_MinimumOnOff_s = 2
+PWM_MinimumOnOff_s = 14
 
 ### Maximum allowed extended period
 PWM_PeriodMax_s = 90
