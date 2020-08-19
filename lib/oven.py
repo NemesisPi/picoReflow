@@ -264,7 +264,7 @@ class Oven (threading.Thread):
                     # If the heat is on and nothing is changing, reset
                     # The direction or amount of change does not matter
                     # This prevents runaway in the event of a sensor read failure
-                    if temperature_count > 100:
+                    if temperature_count > 99:
                         log.info("Error reading sensor, oven temp not responding to heat.")
                         self.reset()
                         continue
