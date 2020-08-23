@@ -9,7 +9,8 @@ Not Limited by stages and or programs like many other older kiln controllers
 * Added a High Limit Emergency shut off     Heating will be turned off and program stopped
 * Added a Thermocouple Offset     adjust if needed to calibrate
 * Removed CSV Logging MAKES IT SAFE NOT WRITING TO THE DISK! ACCESS LOGGING DATA IN TERMINAL CONTROLLER IS RUNNING IN only in manual mode.d 
-Logging will be move to online logging with the new app! Logging currently in manual mode in terminal when not auto booting controller.
+* Use the Live logging graph to help diagnose loose thermocouple connections and many other issues 
+* Logging will be moved to online logging with the new app! Logging currently in manual mode in terminal when not auto booting controller.
 This software Perfect for controlling a electric kiln and is works reliably with full remote control if needed via Phone ,Tablet or PC etc.. 
 The added options make it suitable for a much wider range of thermal control. 
 
@@ -33,3 +34,5 @@ Use "simplescreenrecorder" from the app store in Linux to record your firing log
 Rememeber share and  email your friends your working firing programs great to help out the Noobs
 
 Great for Glass kilns pottery kilns distilleries and the list goes on and on
+
+Watch this Space!!!
