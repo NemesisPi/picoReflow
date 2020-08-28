@@ -22,10 +22,7 @@ Short to Vcc
 
 WE are
 Working on a
-New App!! for IOS and Android
-
-and we are also working on a   
-New Start Button Passcode Required option Making it even safer!!! encryption for greater security!!!
+New App!! for IOS and Android  Pushing email ,text messages, cloud logging to the cloud
 
 Much much more coming soon all avaliable via updating 
 
