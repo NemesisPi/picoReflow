@@ -7,17 +7,17 @@ Not Limited by stages and or programs ,you can have Thousands depending on PI4 m
 * Time and temperature units defined per profile
 * Added a High Limit Emergency shut off     Heating will be turned off and program stopped
 * Added a Thermocouple Offset     adjust if needed to calibrate
-* Removed CSV Logging MAKES IT SAFE NOT WRITING TO THE DISK! ACCESS LOGGING DATA IN TERMINAL CONTROLLER IS RUNNING IN only in manual mode or graph scrren shot. 
+* Removed CSV Logging MAKES IT SAFE NOT WRITING TO THE DISK! ACCESS LOGGING DATA IN TERMINAL CONTROLLER IS RUNNING IN only in manual mode or graph screen shot       will move to cloud. 
 * Use the Live logging graph to help diagnose loose thermocouple connections and kiln issues such as relays and element wear over time. 
 * Logging will be moved to online logging with the new app! Logging currently in manual mode in terminal when not auto booting controller.
 * added 2 key press Stop Button option also setting up 3 zone removed simulate function 26/8/20
 This software Perfect for controlling a electric kiln and is works reliably with full remote control if needed via Phone ,Tablet or PC etc.. 
 The added options make it suitable for a much wider range of thermal control. 
 
-Has error codes and will stop on errors for "safety"
-NO connection
-Short to ground
-Short to Vcc
+Has error codes and will stop on errors for "safety" for max 31855k current driver supported module more coming soon very soon type k , n , r ,s ,j ,t Pt100, pt1000 etc
+NO connection     Thermocouple sensor break
+Short to ground   Thermocouple short to ground     Grounding on metal case of kiln
+Short to Vcc      Thermocouple picking up voltage from elements,old insulation or thermoouple close to elements small voltage can make errors in temperature readings.
 
 WE are
 Working on a
@@ -35,3 +35,11 @@ Rememeber share and  email your friends your working firing programs great to he
 Great for Glass kilns pottery kilns distilleries and the list goes on and on
 
 Watch this Space!!!
+
+Special thanks for the auto tune function implementation it just works!!!
+cheers to 
+Peter Thompson
+Petronator
+
+Updates will be maintained for ever for free by us and the community make it your own expand it!
+
