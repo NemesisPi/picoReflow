@@ -5,10 +5,9 @@ Some Functions below are work in progress see config.py
 Not Limited by stages and or programs ,you can have Thousands depending on PI4 models memory 4Gb or 8Gb
 * Automatic PID tuning
 * Time and temperature units defined per profile
-* Option to wait for system to reach target temperature before going to next profile stage
 * Added a High Limit Emergency shut off     Heating will be turned off and program stopped
 * Added a Thermocouple Offset     adjust if needed to calibrate
-* Removed CSV Logging MAKES IT SAFE NOT WRITING TO THE DISK! ACCESS LOGGING DATA IN TERMINAL CONTROLLER IS RUNNING IN only in manual mode. 
+* Removed CSV Logging MAKES IT SAFE NOT WRITING TO THE DISK! ACCESS LOGGING DATA IN TERMINAL CONTROLLER IS RUNNING IN only in manual mode or graph scrren shot. 
 * Use the Live logging graph to help diagnose loose thermocouple connections and kiln issues such as relays and element wear over time. 
 * Logging will be moved to online logging with the new app! Logging currently in manual mode in terminal when not auto booting controller.
 * added 2 key press Stop Button option also setting up 3 zone removed simulate function 26/8/20
@@ -22,7 +21,9 @@ Short to Vcc
 
 WE are
 Working on a
-New App!! for IOS and Android  Pushing email ,text messages, cloud logging to the cloud
+New App!! for IOS and Android  Pushing email ,text messages, cloud logging and so much more!!!
+Up to you if google home or alexa is added left out as a safety feature!
+Adding a simple on/off pid controller
 
 Much much more coming soon all avaliable via updating 
 
