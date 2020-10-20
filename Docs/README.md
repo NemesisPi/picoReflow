@@ -1,5 +1,5 @@
 Nemesis PI is a Fork or picoThermal which is a fork off of picoReflow by [apollo-ng]. It is intended to make it more 
-versatile (suited for reflow oven or ceramic kiln) by adding several features:
+versatile (suited for ceramic Pottery kilns) by adding several features:
 Some Functions below are work in progress see config.py
 
 Not Limited by stages and or programs ,you can have Thousands depending on PI4 models memory 4Gb or 8Gb
