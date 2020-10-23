@@ -54,7 +54,7 @@ gpio_sensor_data = 26
 spi_sensor_chip_id = 0
 
 ### amount of time, in seconds, to wait between reads of the thermocouple
-# This is also the rate of the control loop?
+# This is also the rate of the control loop will also effect PWM settings below best to leave alone
 sensor_read_period = 1
 
 
