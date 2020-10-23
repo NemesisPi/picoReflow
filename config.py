@@ -16,23 +16,16 @@ listening_port = 8081
 kwh_rate        = 0.26  # Rate in currency_type to calculate cost to run job
 currency_type   = "AUD"   # Currency Symbol to show when calculating cost to run job
 oven_power      = 2400  # Average watts consumed by oven while running
-#oven power cost calculations must be change currently in /home/pi/NemesisPI/public/assets/js/picoreflow.js File
+#oven power cost calculations must be change currently in /home/pi/NemesisPI/public/assets/js/picoreflow.js File open with text editor find oven power at top of file change settings and save
 ########################################################################
-#
-#   GPIO Setup (BCM SoC Numbering Schema)
-#
-#   Check the RasPi docs to see where these GPIOs are
-#   connected on the P1 header for your board type/rev.
-#   These were tested on a Pi B Rev2 but of course you
-#   can use whichever GPIO you prefer/have available.
 
-##Enabled outputs
+##Enabled outputs   
 heat_enabled = True		# Enable control for heater
-heat2_enabled = True	# Enabled control for second heater
+heat2_enabled = True	# Enabled control for second heater                      
 cool_enabled = False	# Enable control for cooler (exterior fan, etc.)
 air_enabled = False		# Enable control for internal air circulation (interior fan)
 
-### Outputs
+### Outputs Do not Change
 gpio_heat = 20  # Switches zero-cross solid-state-relay
 gpio_heat2 = 05 # Second heater control
 gpio_cool = 21  # Regulates PWM for 12V DC Blower
@@ -40,24 +33,24 @@ gpio_air  = 16   # Switches 0-phase det. solid-state-relay
 
 heater_invert = 0 # switches the polarity of the heater control
 
-### Inputs
+### Inputs Do not Change
 door_enabled = False	# Enable sensor for door open
 gpio_door = 18
 
-### Thermocouple Adapter selection:
+### Thermocouple Adapter selection:     Do not Change
 #   max31855 - bitbang SPI interface
 #   max31855spi - kernel SPI interface
 #   max6675 - bitbang SPI interface
 max31855 = 1
 max6675 = 0
-max31855spi = 0 # Consumes pins 7,8,9,10,11
+max31855spi = 0 
 
-### Thermocouple Connection (using bitbang interfaces)
+### Thermocouple Connection (using bitbang interfaces) Do not Change
 gpio_sensor_cs = 19
 gpio_sensor_clock = 13
 gpio_sensor_data = 26
 
-### Thermocouple SPI Connection (using adafrut drivers + kernel SPI interface)
+### Thermocouple SPI Connection (using adafrut drivers + kernel SPI interface) Do not Change
 spi_sensor_chip_id = 0
 
 ### amount of time, in seconds, to wait between reads of the thermocouple
@@ -87,14 +80,14 @@ PWM_PeriodMax_s = 90
 heat1adj = 0		# heater 1 PWM offset, in percent
 heat2adj = 0		# heater 2 PWM offset, in percent
 
-### Profile Adjustments for Kilns
+### Profile Adjustments for Kilns (This is not yet implemented leave settings below as is).
 # must_hit_temp adjusts for systems where the heater might not be able to keep up with the profile
 # If false, the system will not adjust the timing of the profile
-# If true,0.07897356 the system is guaranteed to hit the temperatures of the profile. It will wait until
+# If true,the system is guaranteed to hit the temperatures of the profile. It will wait until
 # the target is reached before moving to the next segment of the profile
 must_hit_temp = True
 
-# Cone slope adj adjusts the target temperature when the segment takes longer than expected
+# Cone slope adj adjusts the target temperature when the segment takes longer than expected (This is not yet implemented leave settings below as is).
 # It's expressed in deg C per (deg C per hour), i.e. the shift in temperature target per shift in temperature rate
 # For instance, setting to 0.4 will reduce the target temperature by 40 deg C if the final slope is 100 deg C/hour
 # lower than the profile slope
@@ -105,7 +98,7 @@ cone_slope_adj = 0.0
 
 ########################################################################
 #
-#   PID parameters
+#   PID parameters Tune Kiln once all settings are selected
 pid_kp = 1.0  # Proportional       #Enter P Results From Terminal here 
 pid_ki = 0.0  # Integration        #Enter I Results From Terminal here 
 pid_kd = 0.0  # Derivative         #Enter D Results From Terminal here 
@@ -118,7 +111,7 @@ emergency_shutoff_temp = 1305       #Put in a High Limit Onced reached it stops 
 thermocouple_offset=0              #For adjusting an Thermocouple offset if calibration is out 
 ########################################################################
 #
-#   Simulation parameters
+#   Simulation parameters not used any more
 
 sim_t_env      = 25.0   # deg C
 sim_c_heat     = 100.0  # J/K  heat capacity of heat element
@@ -136,8 +129,7 @@ sim_R_ho_air   = 0.05   # K/W  " with internal air circulation
 
 ## These are defaults for new profiles, and can be modified on a per-profile basis
 
-#some functions below are work in progress All set only for time in minutes
-
+#Some functions below are work in progress , Only change Temp Scale
 temp_scale          = "c" # c = Celsius | f = Fahrenheit - Unit to display 
 time_scale_slope    = "m" # s = Seconds | m = Minutes | h = Hours - Slope displayed in temp_scale per time_scale_slope
 time_scale_profile  = "m" # s = Seconds | m = Minutes | h = Hours - Enter and view target time in time_scale_profile
