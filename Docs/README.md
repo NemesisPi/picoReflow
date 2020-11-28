@@ -10,7 +10,13 @@ Not Limited by stages and or programs ,you can have Thousands depending on PI4 m
 * Removed CSV Logging MAKES IT SAFE NOT WRITING TO THE DISK! ACCESS LOGGING DATA IN TERMINAL CONTROLLER IS RUNNING IN only in manual mode or graph screen shot       will move to cloud. 
 * Use the Live logging graph to help diagnose loose thermocouple connections and kiln issues such as relays and element wear over time. 
 * Logging will be moved to online logging with the new app! Logging currently in manual mode in terminal when not auto booting controller.
-* added 2 key press Stop Button option also setting up 3 zone removed simulate function 26/8/20
+
+26/8/20
+* added 2 key press Stop Button option also setting up 3 zone removed simulate function
+
+29/11/20
+* added Talking Kiln Controller update and bungs in terminal notification!
+Change the .wav files with your voice just name them exactly as is.
 This software Perfect for controlling a electric kiln and is works reliably with full remote control if needed via Phone ,Tablet or PC etc.. 
 The added options make it suitable for a much wider range of thermal control. 
 
@@ -42,4 +48,6 @@ Peter Thompson
 Petronator
 
 Updates will be maintained for ever for free by us and the community make it your own expand it!
+Please send us a message to help make it better!
+
 
