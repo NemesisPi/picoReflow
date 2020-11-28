@@ -1,5 +1,4 @@
-#Include to guarantee that division will produce a floating-point value in Python 2.x
-
+#Include to guarantee that division will produce a floating-point value in Python
 
 import threading
 import time
@@ -9,7 +8,8 @@ import logging
 import json
 import config
 import math
-
+import requests
+import pygame
 
 
 log = logging.getLogger(__name__)
@@ -46,17 +46,18 @@ try:
         raise Exception("gpio_heat2 pin %s collides with SPI pins %s" % (config.gpio_heat2, spi_reserved_gpio))
 
     sensor_available = True
-
+    
 except ImportError:
     log.exception("Could not initialize temperature sensor, using dummy values!")
     sensor_available = False
-
+    
 try:
     import RPi.GPIO as GPIO
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     GPIO.setup(config.gpio_heat, GPIO.OUT) 	if config.heat_enabled else None
     GPIO.setup(config.gpio_heat2, GPIO.OUT) if config.heat2_enabled else None
+    GPIO.setup(config.gpio_beeper, GPIO.OUT)
     GPIO.setup(config.gpio_cool, GPIO.OUT) 	if config.cool_enabled else None
     GPIO.setup(config.gpio_air, GPIO.OUT) 	if config.air_enabled else None
     GPIO.setup(config.gpio_door, GPIO.IN, pull_up_down=GPIO.PUD_UP) if config.door_enabled else None
@@ -111,6 +112,7 @@ class Oven (threading.Thread):
         self.PWM.setHeat2(0)
         self.set_cool(False)
         self.set_air(False)
+        self.set_beeper(False)
         self.pid.reset()
 
     def run_profile(self, profile, resume = False):
@@ -126,15 +128,33 @@ class Oven (threading.Thread):
         self.state = Oven.STATE_RUNNING
         self.pid.reset()
         log.info("Starting")
+        pygame.mixer.init()
+        pygame.mixer.music.load("/home/pi/NemesisPI/sounds/start_run.wav")
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy() == True:
+            continue
 
     def abort_run(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load("/home/pi/NemesisPI/sounds/run_stopped.wav")
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy() == True:
+           continue
         self.reset()
+
+             
 
     def run_tuning(self): #, temp_target, n_cycles):
         temp_target = config.tune_target_temp
         n_cycles = config.tune_cycles
 
         log.info("Running auto-tune algorithm. Target: %.0f deg C, Cycles: %.0f", temp_target, n_cycles);
+        pygame.mixer.init()
+        pygame.mixer.music.load("/home/pi/NemesisPI/sounds/auto_tuning.wav")
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy() == True:
+           continue
+
         self.state = Oven.STATE_TUNING
         self.start_time = datetime.datetime.now()
         self.heatOn = True
@@ -155,7 +175,10 @@ class Oven (threading.Thread):
 
     def run(self):
         temperature_count = 0
-        last_temp = 0
+        log_counter = 0
+        log_trigger = config.logging_time_step / self.time_step
+        log.info("Log trigger is %s steps" % log_trigger)
+        last_temp = 0    
         pid = 0
 
         while True:
@@ -232,6 +255,11 @@ class Oven (threading.Thread):
                     self.pid.Kd = Kd
                     log.info("Tuning Complete.")
                     log.info("Make these values permanent by entering them in to the config.py file.")
+                    pygame.mixer.init()
+                    pygame.mixer.music.load("/home/pi/NemesisPI/sounds/auto_tuning_complete.wav")
+                    pygame.mixer.music.play()
+                    while pygame.mixer.music.get_busy() == True:
+                        continue
                     self.reset()
                     continue
 
@@ -248,7 +276,7 @@ class Oven (threading.Thread):
                 pid = self.pid.compute(self.target, self.temp_sensor.temperature + config.thermocouple_offset)
 
                 ##Should we store the current run time in case of power failure?
-                ##Add to future release
+                ##Add to future release but where to store it to make it safe?
                 
                 log.debug("pid: %.3f" % pid)
 
@@ -264,8 +292,16 @@ class Oven (threading.Thread):
                     # If the heat is on and nothing is changing, reset
                     # The direction or amount of change does not matter
                     # This prevents runaway in the event of a sensor read failure
-                    if temperature_count > 100:
+                    if temperature_count > 90:
                         log.info("Error reading sensor, oven temp not responding to heat.")
+                        self.reset()
+                        pygame.mixer.init()
+                        pygame.mixer.music.load("/home/pi/NemesisPI/sounds/not_responding_to_heat.wav")
+                        pygame.mixer.music.play()
+                        while pygame.mixer.music.get_busy() == True:
+                            continue
+                        self.set_beeper(True)
+                        time.sleep(30.0)
                         self.reset()
                         continue
                 else:
@@ -289,18 +325,45 @@ class Oven (threading.Thread):
                 # elif self.temp_sensor.temperature < 180:
                     # self.set_air(True)
 
+                # this loop reduces the remote logging frequency to save bandwidth
+                if log_counter >= log_trigger:
+                    #send a log to ubidots
+                    #log.info("Sending log to Ubidots")
+                    #self.send_log()
+                    log_counter = 0
+                else:
+                    log_counter = 1
+                    #log.info("Log counter is at %.0f of %.0f steps" % (log_counter, log_trigger))
+
                 # High Limit for Emergency Shut off
                 if(self.temp_sensor.temperature + config.thermocouple_offset >= config.emergency_shutoff_temp):
                     log.info("Warning! Temperature above emergency shut off temp set in config, Stopping to protect your device")
                     self.reset()
+                    pygame.mixer.init()
+                    pygame.mixer.music.load("/home/pi/NemesisPI/sounds/high_limit_reached.wav")
+                    pygame.mixer.music.play()
+                    while pygame.mixer.music.get_busy() == True:
+                        self.reset()
+                        continue
+
+                # Bung Warning Temperature need image onscreen sound aswell hmm and a servo
+                if(self.temp_sensor.temperature + config.thermocouple_offset >= config.bung_temp):
+                    log.info("Warning! Please Put your Bungs in")                     
+                           
 
                 if self.runtime >= self.totaltime:
                     self.reset()
+                    pygame.mixer.init()
+                    pygame.mixer.music.load("/home/pi/NemesisPI/sounds/run_complete.wav")
+                    pygame.mixer.music.play()
+                    while pygame.mixer.music.get_busy() == True:
+                        continue
+                    self.set_beeper(True)
+                    time.sleep(15.0)
+                    self.reset()
                     continue
             else:  # Not tuning or running - make sure oven is off
-                self.heat = 0
-
-                                    
+                self.heat = 0                             
                
             #Do these regardless of the machine state
             if self.heat > 0:
@@ -332,6 +395,14 @@ class Oven (threading.Thread):
             if gpio_available and config.air_enabled:
                 GPIO.output(config.gpio_air, GPIO.HIGH)
 
+    def set_beeper(self, value):
+        if value:
+            if gpio_available:
+                GPIO.output(config.gpio_beeper, GPIO.HIGH)
+        else:
+            if gpio_available:
+                GPIO.output(config.gpio_beeper, GPIO.LOW)
+
     def get_state(self):
         state = {
             'runtime': self.runtime,
@@ -353,6 +424,21 @@ class Oven (threading.Thread):
         else:
             return "UNKNOWN"
 
+    def send_log(self):
+        url = config.ubidots_url
+        headers = {'X-Auth-Token': config.ubidots_token}
+        payload = {'runtime': self.runtime,
+        'temperature': self.temp_sensor.temperature + config.thermocouple_offset,
+        'target': self.target,
+        'state': self.state,
+        'heat': self.heat,
+        'totaltime': self.totaltime,
+        'heat': sorted((0, self.heat, 1))[1],
+        'door': self.door
+        }
+        log.info("Payload is %s" % payload)
+        r = requests.post(url, headers=headers, data=payload)
+        log.info("Response is %s" % r)
 
 class PWM(threading.Thread):
     def __init__(self, Period_s, MinimumOnOff_s, PeriodMax_s):
@@ -479,7 +565,7 @@ class TempSensorReal(TempSensor):
         if config.max31855spi:
             log.info("init MAX31855-spi")
             self.thermocouple = MAX31855SPI(spi_dev=SPI.SpiDev(port=0, device=config.spi_sensor_chip_id))
-
+        
     def run(self):
         lasttemp = 0
 
@@ -490,6 +576,11 @@ class TempSensorReal(TempSensor):
             except Exception:
                 self.temperature = lasttemp
                 log.exception("problem reading temp")
+                pygame.mixer.init()
+                pygame.mixer.music.load("/home/pi/NemesisPI/sounds/sensor_read_fail_no_connection.wav")
+                pygame.mixer.music.play()
+                while pygame.mixer.music.get_busy() == True:
+                    continue
             time.sleep(self.time_step)
 
 
@@ -613,6 +704,11 @@ class Profile():
             return datetime.timedelta() #Start at the beginning
         elif temperature > max([x for (t, x) in self.data]):
             log.exception("Current temperature is higher than max profile point! Cannot resume.")
+            pygame.mixer.init()
+            pygame.mixer.music.load("/home/pi/NemesisPI/sounds/resume_error.wav")
+            pygame.mixer.music.play()
+            while pygame.mixer.music.get_busy() == True:
+                continue
             return None
         else:
             for index in range(1, len(self.data)):
