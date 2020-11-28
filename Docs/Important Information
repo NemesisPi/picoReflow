@@ -5,10 +5,10 @@ Never Close Terminal with out stopping firings first while in manual mode and ki
 Always set this option in config.py once that temperature hits that temperature it stops program but not if you close terminal as explained above in manual mode
 emergency_shutoff_temp = 1270
 
-Keep your controller software updated ,come back from time to time to see the advancements we are making!!!
+Latest Update A Talking Kiln controller only works in manual start up bluetooth not supported yet!
 
-Use "simplescreenrecorder" from the app store in Linux to record your firing logs
-Rememeber share and  email your friends your working firing programs great to help out the Noobs
 
 Always be in attendance as kiln manufactures state
+
 This is Freeware!!! 
+
