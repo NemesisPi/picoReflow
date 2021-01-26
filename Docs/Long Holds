@@ -1,0 +1,4 @@
+Copy and paste over  main config to use and reboot Nemesis PI or restart terminal/depending if set to auto boot , once pre tuned this is for when long Holds which are required for knife Kilns will make temperature more accurate pre-tune and add PID figures to these when tuning at required temperatures always set      PID settings to     P=1.0 I=0.0 D=0.0 
+All PID controllers must be tuned at temperature required for more accuracy
+For Long Holds set Minimum On/Off time to 1 second in config leave default at 14 seconds
+Works very well on knife kilns
