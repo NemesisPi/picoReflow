@@ -48,6 +48,7 @@ Special thanks for the auto tune function implementation it just works!!!
 cheers to 
 Peter Thompson
 Petronator
+Also Special Thanks To JBruce12000 for all his hard work in many other areas of the programming making it a way better controller
 
 Updates will be maintained for ever for free by us and the community make it your own expand it!
 Please send us a message to help make it better!
