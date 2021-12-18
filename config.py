@@ -87,10 +87,10 @@ air_enabled = False		# Enable control for internal air circulation (interior fan
 
 ### Outputs
 gpio_heat = 20  # Switches zero-cross solid-state-relay
-gpio_heat2 = 05 # Second heater control
+#gpio_heat2 = 05 # Second heater control
 gpio_cool = 21  # Regulates PWM for 12V DC Blower
 gpio_air  = 16   # Switches 0-phase det. solid-state-relay
-gpio_beeper = 06  # Switches beeper
+#gpio_beeper = 06  # Switches beeper
 
 heater_invert = 0 # switches the polarity of the heater control 0 for SSR Heat
 
