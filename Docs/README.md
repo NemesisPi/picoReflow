@@ -27,6 +27,8 @@ NO connection     Thermocouple sensor break
 Short to ground   Thermocouple short to ground     Grounding on metal case of kiln
 Short to Vcc      Thermocouple picking up voltage from elements,old insulation or thermoouple close to elements small voltage can make errors in temperature readings.
 
+Error Fault code 4 = Temperature reading 4 deg C means line fault or thermocouple board issue
+
 
 Much much more coming soon all avaliable via updating 
 
@@ -45,7 +47,7 @@ Peter Thompson
 Petronator
 Also Special Thanks To JBruce12000 for all his hard work in many other areas of the programming making it a way better controller
 
-Updates will be maintained for ever for free by us and the community make it your own expand it!
+Updates will be maintained for free by us and the community make it your own expand it!
 Please send us a message to help make it better!
 
 Step 1)
@@ -68,6 +70,8 @@ git clone https://github.com/Brett308/NemesisPI.git
 
 sudo pip3 install greenlet bottle gevent gevent-websocket
 
+
+
 Thats it now you can start the controller see full manual VNC setup and other options
 
 Step 3)
@@ -78,7 +82,7 @@ cd NemesisPI
 python picoreflowd.py
 
 Then open web browser on the 
-Nemesis PI and enter into address bar 127.0.0.1:8081 Press enter ,controller interface will load.
+Nemesis PI and enter into address bar 127.0.0.1:8081 Press enter ,controller interface will load.refresh browser if not loaded correctly
 
 Step 4)
 Once Autotuned then set up below
@@ -93,7 +97,7 @@ add the line:
 
 Add above line just above last exit at bottom of file once changed hold down Ctrl key + o to save then press enter then close terminal close Terminal and reboot Nemesis PI.
 
-Step 5)Auto Tuning see videos and full manual on help page nemesispi
+Step 5)Auto Tuning see videos and full manual on help page nemesispi.com.au
 
 
 For more updated help see Nemesis Pi help page as things change in the operating system from time to time we 
@@ -102,7 +106,6 @@ update as fast as we can to make sure all is working
 This quick install file can be found on our help page and manual page see full manual/Videos for AutoTuning
 HAVE GOOD WIFI AND IF IT DOSNT WORK REDO ABOVE BUT IT WILL
 
-Error Fault code 4 = Temperature reading 4 deg C means line fault or thermocouple board issue
 
 
 
