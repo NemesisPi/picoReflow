@@ -79,6 +79,7 @@ Manual Server Startup
 Copy lines below and paste in terminal press enter
 
 cd NemesisPI
+
 python picoreflowd.py
 
 Then open web browser on the 
