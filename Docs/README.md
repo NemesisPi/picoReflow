@@ -8,7 +8,7 @@ Not Limited by stages and or programs ,you can have Thousands depending on PI4 m
 * Added a High Limit Emergency shut off     Heating will be turned off and program stopped
 * Added a Thermocouple Offset     adjust if needed to calibrate
 * Removed CSV Logging MAKES IT SAFE NOT WRITING TO THE DISK! ACCESS LOGGING DATA IN TERMINAL CONTROLLER IS RUNNING IN only in manual mode or graph screen shot       will move to cloud. 
-* Use the Live logging graph to help diagnose loose thermocouple connections and kiln issues such as relays and element wear over time. 
+* Use the Live graph to help diagnose loose thermocouple connections and kiln issues such as relays and element wear over time. 
 * Logging will be moved to online logging with the new app! Logging currently in manual mode in terminal when not auto booting controller.
 
 26/8/20
@@ -27,11 +27,6 @@ NO connection     Thermocouple sensor break
 Short to ground   Thermocouple short to ground     Grounding on metal case of kiln
 Short to Vcc      Thermocouple picking up voltage from elements,old insulation or thermoouple close to elements small voltage can make errors in temperature readings.
 
-WE are
-Working on a
-New App!! for IOS and Android  Pushing email ,text messages, cloud logging and so much more!!!
-Up to you if google home or alexa is added left out as a safety feature!
-Adding a simple on/off pid controller
 
 Much much more coming soon all avaliable via updating 
 
@@ -52,6 +47,60 @@ Also Special Thanks To JBruce12000 for all his hard work in many other areas of 
 
 Updates will be maintained for ever for free by us and the community make it your own expand it!
 Please send us a message to help make it better!
+
+Step 1)
+ON SCREEN KEYBOARD
+Copy line below and paste in terminal press enter if prompted press Y
+
+sudo apt install onboard -y
+
+Step 2)
+INSTALL KILN CONTROLLER
+Copy lines below and paste in terminal press ,answer Y to any prompts and press Enter.
+
+sudo apt-get install python3-pip python3-dev libevent-dev git -y
+sudo pip install ez-setup
+sudo apt install libffi-dev
+git clone https://github.com/Brett308/NemesisPI.git
+sudo pip3 install greenlet bottle gevent gevent-websocket
+
+Thats it now you can start the controller see full manual VNC setup and other options
+
+Step 3)
+Manual Server Startup
+Copy lines below and paste in terminal press enter
+
+cd NemesisPI
+python picoreflowd.py
+
+Then open web browser on the 
+Nemesis PI and enter into address bar 127.0.0.1:8081 Press enter ,controller interface will load.
+
+Step 4)
+Once Autotuned then set up below
+Autostart Server on Boot(do this after Auto Tuning Nemesis PI
+If you want the server to autostart on boot, run the following commands
+
+sudo nano /etc/rc.local
+
+add the line:
+
+`sudo python /home/pi/NemesisPI/picoreflowd.py &`
+
+Add above line just above last exit at bottom of file once changed hold down Ctrl key + o to save then press enter then close terminal close Terminal and reboot Nemesis PI.
+
+Step 5)Auto Tuning see videos and full manual on help page nemesispi
+
+
+For more updated help see Nemesis Pi help page as things change in the operating system from time to time we 
+update as fast as we can to make sure all is working
+
+This quick install file can be found on our help page and manual page see full manual/Videos for AutoTuning
+HAVE GOOD WIFI AND IF IT DOSNT WORK REDO ABOVE BUT IT WILL
+
+Error Fault code 4 = Temperature reading 4 deg C means line fault or thermocouple board issue
+
+
 
 
 
