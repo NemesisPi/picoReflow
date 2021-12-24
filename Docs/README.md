@@ -59,9 +59,13 @@ INSTALL KILN CONTROLLER
 Copy lines below and paste in terminal press ,answer Y to any prompts and press Enter.
 
 sudo apt-get install python3-pip python3-dev libevent-dev git -y
+
 sudo pip install ez-setup
+
 sudo apt install libffi-dev
+
 git clone https://github.com/Brett308/NemesisPI.git
+
 sudo pip3 install greenlet bottle gevent gevent-websocket
 
 Thats it now you can start the controller see full manual VNC setup and other options
