@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NemesisPI
+Comment=Temp controller BP 2022
+Icon=/home/pi/NemesisPI/public/assets/images/NemesisPI.xpm
+Exec=/usr/bin/python /home/pi/NemesisPI/picoreflowd.py
+Type=Application
+Encoding=UTF-8
+Terminal=true
+Categories=None;
