@@ -52,23 +52,17 @@ Please send us a message to help make it better!
 
 Step 1)
 INSTALL KILN CONTROLLER
-Copy lines below and paste in terminal press ,answer Y to any prompts and press Enter.
+Copy lines below one by one and paste in terminal press ,answer Y to any prompts and press Enter.
 
 git clone https://github.com/Brett308/NemesisPI.git
-sleep 2
 sudo pip install ez-setup
-sleep 2
 sudo apt install libffi-dev
-sleep 2
 sudo pip3 install greenlet bottle gevent gevent-websocket
-sleep 2
 sudo apt-get install python3-pip python3-dev libevent-dev git -y
-sleep 2
-sudo apt install onboard -y
 sudo su
 update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
-Thats it now you can start the controller see full manual other options SUCH AS REMOTE VIEWING
+Thats it now you can start the controller see full manual other options SUCH AS REMOTE VIEWING using VNC
 
 Step 2)
 Manual Server Startup
