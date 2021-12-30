@@ -91,12 +91,22 @@ Add above line just above last exit at bottom of file once changed hold down Ctr
 Step 4)Auto Tuning see videos and full manual on help page nemesispi.com.au
 
 
+
 For more updated help see Nemesis Pi help page as things change in the operating system from time to time we 
 update as fast as we can to make sure all is working
 
 This quick install file can be found on our help page and manual page see full manual/Videos for AutoTuning
 HAVE GOOD WIFI AND IF IT DOSNT WORK REDO ABOVE BUT IT WILL
 
+License
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
+
+picoReflow
+For more info on the parent project, see picoReflow: https://apollo.open-resource.org/mission:resources:picoreflow
 
 
 
